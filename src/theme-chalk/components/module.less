@@ -1,0 +1,22 @@
+@import "../common/var.less";
+@import "../common/mixin.less";
+
+@module-css-prefix: ~"@{global-css-prefix}module";
+
+.@{module-css-prefix} {
+  margin-top: 15px;
+  &.is-border {
+    border: 1px solid #eeeeee;
+  }
+
+  &-title {
+    font-size: 18px;
+    padding: 10px 0 5px;
+    color: #333333;
+  }
+
+  &-content {
+    padding: 10px 10px;
+    border: 1px solid #eeeeee;
+  }
+}

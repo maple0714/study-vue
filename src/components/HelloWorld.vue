@@ -1,60 +1,94 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank" rel="noopener">unit-jest</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+    <div style="width: 700px;margin: 0 auto;">
+        <div>我是{{name}}，年龄{{age}}</div>
+        <button @click="subtract(1)">减一岁</button>
+        <button @click="add(1)">加一岁</button>
+        <button @click="subtract(10)">减十岁</button>
+        <button @click="add(10)">加十岁</button>
+        <div id="canvas" @mousemove="updateXY" class="canvas">
+            {{x}},{{y}}
+            <span @mousemove.stop>StopMoving</span>
+        </div>
+
+
+        <div class="global-module">
+            <h3 class="global-module-title">双向绑定</h3>
+            <div class="global-module-content">
+                <input type="text" v-model="age" placeholder="请输入年龄" />
+                <div>年龄：{{age}}</div>
+            </div>
+        </div>
+
+        <div class="global-module">
+            <h3 class="global-module-title">Computed计算属性</h3>
+            <div class="global-module-content">
+                <button @click="computedA++">Add to A</button>
+                <button @click="computedB++">Add to B</button>
+                <div>A：{{computedA}}</div>
+                <div>B：{{computedB}}</div>
+                <div>C + A = {{addToA}}</div>
+                <div>C + B = {{addToB}}</div>
+            </div>
+        </div>
+
+    </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+<script>
+    export default {
+        name: "hello-world",
 
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
-}
+        data() {
+            return {
+                name: 'Sev7en',
+                age: 18,
+                x: 0,
+                y: 0
+            }
+        },
+
+        computed: {
+            addToA() {
+                return this.computedA + this.computedC;
+            },
+            addToB() {
+                return this.computedB + this.computedC;
+            }
+        },
+
+        methods: {
+            subtract(inc) {
+                this.age -= inc;
+            },
+            add(dec) {
+                this.age += dec;
+            },
+            updateXY(event) {
+                this.x = event.offsetX;
+                this.y = event.offsetY;
+            },
+            enterSubmit() {
+                alert("提交成功。");
+            },
+            keySubmit() {
+                alert("提交成功。");
+            }
+            // addToA() {
+            //     return this.computedA + this.computedC;
+            // },
+            // addToB() {
+            //     return this.computedB + this.computedC;
+            // }
+        }
+    }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped>
+    .canvas {
+        width: 400px;
+        height: 200px;
+        margin: 0 auto;
+        line-height: 200px;
+        border: 1px solid #cccccc;
+    }
 </style>

@@ -1,6 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import ClassStyle from './views/ClassStyle.vue';
+import EventModifier from './views/EventModifier.vue';
+import KeyModifier from './views/KeyModifier.vue';
+import Computed from './views/Computed.vue';
+import Condition from './views/Condition.vue';
 
 Vue.use(Router)
 
@@ -10,6 +15,31 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/eventModifier',
+      name: 'eventModifier',
+      component: EventModifier
+    },
+    {
+      path: '/keyModifier',
+      name: 'keyModifier',
+      component: KeyModifier
+    },
+    {
+      path: '/classStyle',
+      name: 'classStyle',
+      component: ClassStyle
+    },
+    {
+      path: '/computed',
+      name: 'computed',
+      component: Computed
+    },
+    {
+      path: '/condition',
+      name: 'condition',
+      component: Condition
     },
     {
       path: '/about',
