@@ -18,6 +18,9 @@
                     linkText: '/',
                     label: '首页'
                 }, {
+                    linkText: '/test',
+                    label: 'test'
+                }, {
                     linkText: '/eventModifier',
                     label: '事件修饰符'
                 }, {

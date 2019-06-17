@@ -6,8 +6,9 @@ import EventModifier from './views/EventModifier.vue';
 import KeyModifier from './views/KeyModifier.vue';
 import Computed from './views/Computed.vue';
 import Condition from './views/Condition.vue';
+import Test from './views/Test.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -15,6 +16,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test
     },
     {
       path: '/eventModifier',
